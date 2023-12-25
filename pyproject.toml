@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "pyquidax"
+version = "0.1.0"
+description = "A developer-friendly third party python client package for Quidax."
+authors = ["Gbenga Adeyi <adeyigbenga005@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "pyquidax" }]
+keywords = ["quidax", "quidax-python"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+httpx = "^0.25.0"
+
+
+[tool.poetry.group.dev.dependencies]
+python-dotenv = "^1.0.0"
+black = "^23.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
