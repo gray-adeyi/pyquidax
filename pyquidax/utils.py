@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional, Union, Any, Sequence
+from typing import Optional, Sequence, Literal
+
+Period = Literal[1, 5, 15, 30, 60, 120, 240, 360, 720, 1440, 4320, 10080]
 
 
 @dataclass

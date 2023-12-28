@@ -34,14 +34,16 @@ class Deposit(BaseAPIWrapper):
             method=HTTPMethod.GET,
         )
 
-class AsyncDeposit(BaseAsyncAPIWrapper):
 
+class AsyncDeposit(BaseAsyncAPIWrapper):
     async def all(self):
         return await self._api_call(
             url=f"{self.base_url}/users/deposits/all", method=HTTPMethod.GET
         )
 
-    async def get_by_user(self, user_id: str, currency: Currency, state: TransactionState):
+    async def get_by_user(
+        self, user_id: str, currency: Currency, state: TransactionState
+    ):
         query_params = (
             ("currency", currency),
             ("state", state),

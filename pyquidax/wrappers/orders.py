@@ -66,6 +66,7 @@ class Order(BaseAPIWrapper):
             method=HTTPMethod.POST,
         )
 
+
 class AsyncOrder(BaseAsyncAPIWrapper):
     async def create(
         self,

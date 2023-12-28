@@ -20,6 +20,7 @@ class Trade(BaseAPIWrapper):
             method=HTTPMethod.GET,
         )
 
+
 class AsyncTrade(BaseAsyncAPIWrapper):
     async def all(self, user_id: str):
         return await self._api_call(

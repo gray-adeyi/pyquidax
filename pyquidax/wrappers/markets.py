@@ -1,7 +1,7 @@
-from typing import Optional, Literal
+from typing import Optional
 
 from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
-from pyquidax.utils import HTTPMethod, CurrencyPair, append_query_parameters
+from pyquidax.utils import HTTPMethod, CurrencyPair, append_query_parameters, Period
 
 
 class Market(BaseAPIWrapper):
@@ -30,9 +30,7 @@ class Market(BaseAPIWrapper):
         self,
         pair: CurrencyPair,
         timestamp: Optional[int] = None,
-        period: Optional[
-            Literal[1, 5, 15, 30, 60, 120, 240, 360, 720, 1440, 4320, 10080]
-        ] = None,
+        period: Optional[Period] = None,
         limit: Optional[int] = None,
     ):
         if limit:
@@ -54,9 +52,7 @@ class Market(BaseAPIWrapper):
         pair: CurrencyPair,
         trade_id: str,
         limit: Optional[int] = None,
-        period: Optional[
-            Literal[1, 5, 15, 30, 60, 120, 240, 360, 720, 1440, 4320, 10080]
-        ] = None,
+        period: Optional[Period] = None,
         timestamp: Optional[int] = None,
     ):
         if limit:
@@ -112,8 +108,8 @@ class Market(BaseAPIWrapper):
             method=HTTPMethod.GET,
         )
 
-class AsyncMarket(BaseAsyncAPIWrapper):
 
+class AsyncMarket(BaseAsyncAPIWrapper):
     async def all(self):
         return await self._api_call(
             url=f"{self.base_url}/markets",
@@ -136,9 +132,7 @@ class AsyncMarket(BaseAsyncAPIWrapper):
         self,
         pair: CurrencyPair,
         timestamp: Optional[int] = None,
-        period: Optional[
-            Literal[1, 5, 15, 30, 60, 120, 240, 360, 720, 1440, 4320, 10080]
-        ] = None,
+        period: Optional[Period] = None,
         limit: Optional[int] = None,
     ):
         if limit:
@@ -150,7 +144,7 @@ class AsyncMarket(BaseAsyncAPIWrapper):
             ("limit", limit),
         )
         url = append_query_parameters(f"{self.base_url}/markets/{pair}/k", query_params)
-        return await  self._api_call(
+        return await self._api_call(
             url=url,
             method=HTTPMethod.GET,
         )
@@ -160,9 +154,7 @@ class AsyncMarket(BaseAsyncAPIWrapper):
         pair: CurrencyPair,
         trade_id: str,
         limit: Optional[int] = None,
-        period: Optional[
-            Literal[1, 5, 15, 30, 60, 120, 240, 360, 720, 1440, 4320, 10080]
-        ] = None,
+        period: Optional[Period] = None,
         timestamp: Optional[int] = None,
     ):
         if limit:
