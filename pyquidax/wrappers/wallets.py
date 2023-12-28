@@ -48,7 +48,8 @@ class Wallet(BaseAPIWrapper):
             url=url,
             method=HTTPMethod.POST,
         )
-        
+
+
 class AsyncWallet(BaseAsyncAPIWrapper):
     async def main(self):
         return await self._api_call(
@@ -57,7 +58,7 @@ class AsyncWallet(BaseAsyncAPIWrapper):
         )
 
     async def get(self, user_id: str, currency: Currency):
-        return  await self._api_call(
+        return await self._api_call(
             url=f"{self.base_url}/users/{user_id}/wallets/{currency}",
             method=HTTPMethod.GET,
         )
@@ -74,7 +75,9 @@ class AsyncWallet(BaseAsyncAPIWrapper):
             method=HTTPMethod.GET,
         )
 
-    async def payment_address_by_id(self, user_id: str, currency: Currency, address_id: str):
+    async def payment_address_by_id(
+        self, user_id: str, currency: Currency, address_id: str
+    ):
         return await self._api_call(
             url=f"{self.base_url}/users/{user_id}/wallets/{currency}/addresses/{address_id}",
             method=HTTPMethod.GET,
@@ -86,7 +89,7 @@ class AsyncWallet(BaseAsyncAPIWrapper):
         url = f"{self.base_url}/users/{user_id}/wallets/{currency}/addresses"
         if network:
             url += f"?network={network}"
-        return await  self._api_call(
+        return await self._api_call(
             url=url,
             method=HTTPMethod.POST,
         )
