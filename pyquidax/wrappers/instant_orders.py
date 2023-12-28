@@ -1,6 +1,6 @@
 from typing import Literal, Optional
 
-from pyquidax.base import BaseAPIWrapper
+from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
 from pyquidax.utils import (
     CurrencyPair,
     OrderState,
@@ -10,12 +10,8 @@ from pyquidax.utils import (
     OrderType,
 )
 
-
-class InstantOrder(BaseAPIWrapper):
-    def __init__(self, secret_key: Optional[str] = None):
-        super().__init__(secret_key)
-
-    def all(
+class AsyncInstantOrder(BaseAsyncAPIWrapper):
+    async def all(
         self,
         pair: Optional[CurrencyPair] = None,
         state: Optional[OrderState] = None,
@@ -26,18 +22,18 @@ class InstantOrder(BaseAPIWrapper):
         url = append_query_parameters(
             f"{self.base_url}/users/{user_id}/instant_orders", query_params
         )
-        return self._api_call(
+        return await self._api_call(
             url=url,
             method=HTTPMethod.GET,
         )
 
-    def get(self, id: str, user_id: str = "me"):
-        return self._api_call(
+    async def get(self, id: str, user_id: str = "me"):
+        return await self._api_call(
             url=f"{self.base_url}/users/{user_id}/instant_orders/{id}",
             method=HTTPMethod.GET,
         )
 
-    def create(
+    async def create(
         self,
         bid: Currency,
         ask: Currency,
@@ -53,20 +49,20 @@ class InstantOrder(BaseAPIWrapper):
             "volume": volume,
             "unit": unit,
         }
-        return self._api_call(
+        return await self._api_call(
             url=f"{self.base_url}/users/{user_id}/instant_orders",
             method=HTTPMethod.POST,
             data=data,
         )
 
-    def confirm(self, id: str, user_id: str = "me"):
-        return self._api_call(
+    async def confirm(self, id: str, user_id: str = "me"):
+        return await self._api_call(
             url=f"{self.base_url}/users/{user_id}/instant_orders/{id}/confirm",
             method=HTTPMethod.POST,
         )
 
-    def requote(self, id: str, user_id: str = "me"):
-        return self._api_call(
+    async def requote(self, id: str, user_id: str = "me"):
+        return await self._api_call(
             url=f"{self.base_url}/users/{user_id}/instant_orders/{id}/requote",
             method=HTTPMethod.POST,
         )
