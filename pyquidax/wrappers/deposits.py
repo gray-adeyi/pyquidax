@@ -34,7 +34,7 @@ class Deposit(BaseAPIWrapper):
             method=HTTPMethod.GET,
         )
 
-class Deposit(BaseAsyncAPIWrapper):
+class AsyncDeposit(BaseAsyncAPIWrapper):
 
     async def all(self):
         return await self._api_call(
