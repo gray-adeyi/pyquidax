@@ -65,3 +65,4 @@ class Order(BaseAPIWrapper):
             url=f"{self.base_url}/users/{user_id}/orders/{id}/cancel",
             method=HTTPMethod.POST,
         )
+
