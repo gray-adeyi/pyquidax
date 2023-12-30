@@ -60,10 +60,6 @@ class Quidax(BaseAPIWrapper):
         )
 
 
-class AsyncQuidax:
-    ...
-
-
 class AsyncQuidax(BaseAsyncAPIWrapper):
     async def validate_address(self, currency: Currency, address: str):
         return await self._api_call(
