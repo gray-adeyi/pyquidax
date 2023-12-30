@@ -71,6 +71,7 @@ class InstantOrder(BaseAPIWrapper):
             method=HTTPMethod.POST,
         )
 
+
 class AsyncInstantOrder(BaseAsyncAPIWrapper):
     async def all(
         self,
