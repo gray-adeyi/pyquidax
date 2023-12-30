@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pyquidax.base import BaseAPIWrapper
+from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
 from pyquidax.utils import (
     Currency,
     HTTPMethod,
@@ -56,6 +56,39 @@ class Quidax(BaseAPIWrapper):
 
     def withdrawal_fee(self, currency: Currency):
         return self._api_call(
+            url=f"{self.base_url}/fee?currency={currency}", method=HTTPMethod.GET
+        )
+
+
+class AsyncQuidax:
+    ...
+
+
+class AsyncQuidax(BaseAsyncAPIWrapper):
+    async def validate_address(self, currency: Currency, address: str):
+        return await self._api_call(
+            url=f"{self.base_url}/{currency}/{address}/validate_address",
+            method=HTTPMethod.GET,
+        )
+
+    async def quotes(self, pair: CurrencyPair, unit: Currency, kind: Kind, volume: int):
+        query_params = (
+            ("market", pair),
+            ("unit", unit),
+            ("kind", kind),
+            ("volume", volume),
+        )
+        url = append_query_parameters(
+            f"{self.base_url}/quotes",
+            query_params,
+        )
+        return await self._api_call(
+            url=url,
+            method=HTTPMethod.GET,
+        )
+
+    async def withdrawal_fee(self, currency: Currency):
+        return await self._api_call(
             url=f"{self.base_url}/fee?currency={currency}", method=HTTPMethod.GET
         )
 
