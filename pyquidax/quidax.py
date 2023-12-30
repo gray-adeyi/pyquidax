@@ -91,7 +91,3 @@ class AsyncQuidax(BaseAsyncAPIWrapper):
         return await self._api_call(
             url=f"{self.base_url}/fee?currency={currency}", method=HTTPMethod.GET
         )
-
-
-class AsyncQuidax:
-    ...
