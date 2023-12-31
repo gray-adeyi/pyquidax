@@ -6,7 +6,7 @@ from pyquidax.utils import HTTPMethod
 
 class Account(BaseAPIWrapper):
     """
-    A class that represent account and has a BaseAPIWrapper as the object
+    A class that represent Account and has a BaseAPIWrapper as the object
     """
 
     def __init__(self, secret_key: Optional[str] = None):
@@ -103,9 +103,25 @@ class Account(BaseAPIWrapper):
 
 
 class AsyncAccount(BaseAsyncAPIWrapper):
+    """
+    Asynchronous class that represent Account
+    """
+
     async def create_sub_account(
         self, email: str, first_name: str, last_name: str, phone_number: str
     ):
+        """
+        Asynchronous create a sub account version
+
+        Args:
+            email (str): The email address of the sub account.
+            first_name (str): The first name of the sub account.
+            last_name (str): The last name of the sub account.
+            phone_number (str): The phone number of the sub account.
+
+        Returns:
+            dict: Information about the created sub account in dictionary form.
+        """
         data = {
             "email": email,
             "first_name": first_name,
