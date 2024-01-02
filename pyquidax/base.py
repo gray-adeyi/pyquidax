@@ -1,5 +1,5 @@
 import os
-from abc import ABC, abstractclassmethod, abstractmethod
+from abc import ABC, abstractmethod
 from typing import Optional, Union
 
 __version__ = "0.1.0"
@@ -77,6 +77,10 @@ class AbstractAPIWrapper(ABC):
 
 class BaseAPIWrapper(AbstractAPIWrapper):
     def __init__(self, secret_key: Optional[str] = None):
+        """
+        Args:
+            secret_key: Your Quidax secret key.
+        """
         super().__init__(secret_key)
 
     def _api_call(
