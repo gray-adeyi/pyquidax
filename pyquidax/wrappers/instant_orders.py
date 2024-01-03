@@ -12,8 +12,9 @@ from pyquidax.utils import (
 
 
 class InstantOrder(BaseAPIWrapper):
-    def __init__(self, secret_key: Optional[str] = None):
-        super().__init__(secret_key)
+    """A wrapper that enables your authenticated
+    users to buy and sell cryptocurrencies at the current market price.
+    """
 
     def all(
         self,
@@ -22,6 +23,23 @@ class InstantOrder(BaseAPIWrapper):
         order_by: Literal["asc", "desc"] = "asc",
         user_id: str = "me",
     ):
+        """Fetches all instant orders, that have previously executed by you or your authenticated users.
+
+        Args:
+            pair: CurrencyPair.BTN_USDT, CurrencyPair.LTC_NGN etc
+            state: OrderState.DONE, OrderState.CONFIRM, OrderState.CANCEL, OrderState.WAIT. Defaults to done if not specified.
+            order_by: The Order in which you  retrieve result either ascending or desending order
+            user_id: The User ID. Use 'me' if fetching wallets of main authenticated user, use the user_id if fetching
+                for Sub-account linked to the authenticated user.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         query_params = (("market", pair), ("state", state), ("order_by", order_by))
         url = append_query_parameters(
             f"{self.base_url}/users/{user_id}/instant_orders", query_params
@@ -32,6 +50,22 @@ class InstantOrder(BaseAPIWrapper):
         )
 
     def get(self, id: str, user_id: str = "me"):
+        """ Fetch detail of an instant order
+
+        Args:
+            id: This is the unique id used to identify instant orders.
+            user_id: The User ID. Use 'me' for main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+            """
+            
         return self._api_call(
             url=f"{self.base_url}/users/{user_id}/instant_orders/{id}",
             method=HTTPMethod.GET,
@@ -46,6 +80,26 @@ class InstantOrder(BaseAPIWrapper):
         unit: int,
         user_id: str = "me",
     ):
+        """Create Instant Order
+
+        Args:
+            bid: Currency.BITCON. Currency.NAIRA etc
+            ask: Currency.BINANCE_COIN, Currency.PANCAKE_SWAP etc
+            type: OrderType.BUY or OrderType.SELL
+            volume: Used if unit is in bid currency.
+            unit: The unit in which the order will be estimated,
+                The unit in which the order will be estimated.
+            user_id:  The User ID. Use 'me' if fetching wallets of main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         data = {
             "bid": bid,
             "ask": ask,
@@ -60,19 +114,50 @@ class InstantOrder(BaseAPIWrapper):
         )
 
     def confirm(self, id: str, user_id: str = "me"):
+        """ Confirmation of an instant order enqueues the order for final execution.
+
+        Args:
+            id:iD of an instant order
+            user_id: The User ID. Use 'me' for main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         return self._api_call(
             url=f"{self.base_url}/users/{user_id}/instant_orders/{id}/confirm",
             method=HTTPMethod.POST,
         )
 
     def requote(self, id: str, user_id: str = "me"):
+        """ Requote an Instant Order
+
+        Args:
+            id:iD of an instant order
+            user_id: The User ID. Use 'me' for main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+:
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         return self._api_call(
             url=f"{self.base_url}/users/{user_id}/instant_orders/{id}/requote",
             method=HTTPMethod.POST,
         )
 
 
-class AsyncInstantOrder(BaseAsyncAPIWrapper):
+class AsynInstantOrder(BaseAsyncAPIWrapper):
     async def all(
         self,
         pair: Optional[CurrencyPair] = None,
@@ -80,6 +165,23 @@ class AsyncInstantOrder(BaseAsyncAPIWrapper):
         order_by: Literal["asc", "desc"] = "asc",
         user_id: str = "me",
     ):
+        """Fetches all instant orders, that have previously executed by you or your authenticated users.
+
+        Args:
+            pair: CurrencyPair.BTN_USDT, CurrencyPair.LTC_NGN etc
+            state: OrderState.DONE, OrderState.CONFIRM, OrderState.CANCEL, OrderState.WAIT. Defaults to done if not specified.
+            order_by: The Order in which you  retrieve result either ascending or desending order
+            user_id: The User ID. Use 'me' if fetching wallets of main authenticated user, use the user_id if fetching
+                for Sub-account linked to the authenticated user.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         query_params = (("market", pair), ("state", state), ("order_by", order_by))
         url = append_query_parameters(
             f"{self.base_url}/users/{user_id}/instant_orders", query_params
@@ -90,6 +192,22 @@ class AsyncInstantOrder(BaseAsyncAPIWrapper):
         )
 
     async def get(self, id: str, user_id: str = "me"):
+        """ Fetch detail of an instant order
+
+        Args:
+            id: This is the unique id used to identify instant orders.
+            user_id: The User ID. Use 'me' for main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
+        
         return await self._api_call(
             url=f"{self.base_url}/users/{user_id}/instant_orders/{id}",
             method=HTTPMethod.GET,
@@ -104,6 +222,26 @@ class AsyncInstantOrder(BaseAsyncAPIWrapper):
         unit: int,
         user_id: str = "me",
     ):
+        """Create Instant Order
+        
+        Args:
+            bid: Currency.BITCON. Currency.NAIRA etc
+            ask: Currency.BINANCE_COIN, Currency.PANCAKE_SWAP etc
+            type: OrderType.BUY or OrderType.SELL
+            volume: Used if unit is in bid currency.
+            unit: The unit in which the order will be estimated,
+                The unit in which the order will be estimated.
+            user_id:  The User ID. Use 'me' if fetching wallets of main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         data = {
             "bid": bid,
             "ask": ask,
@@ -118,12 +256,44 @@ class AsyncInstantOrder(BaseAsyncAPIWrapper):
         )
 
     async def confirm(self, id: str, user_id: str = "me"):
+        """ Confirmation of an instant order enqueues the order for final execution.
+
+        Args:
+            id:iD of an instant order
+            user_id: The User ID. Use 'me' for main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
+        
         return await self._api_call(
             url=f"{self.base_url}/users/{user_id}/instant_orders/{id}/confirm",
             method=HTTPMethod.POST,
         )
 
     async def requote(self, id: str, user_id: str = "me"):
+        """ Requote an Instant Order
+
+        Args:
+            id:iD of an instant order
+            user_id: The User ID. Use 'me' for main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+:
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         return await self._api_call(
             url=f"{self.base_url}/users/{user_id}/instant_orders/{id}/requote",
             method=HTTPMethod.POST,
