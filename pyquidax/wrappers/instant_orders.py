@@ -12,7 +12,7 @@ from pyquidax.utils import (
 
 
 class InstantOrder(BaseAPIWrapper):
-    """A wrapper that enables your authenticated
+    """A wrapper that enables authenticated
     users to buy and sell cryptocurrencies at the current market price.
     """
 
@@ -26,10 +26,12 @@ class InstantOrder(BaseAPIWrapper):
         """Fetches all instant orders, that have previously executed by you or your authenticated users.
 
         Args:
-            pair: CurrencyPair.BTN_USDT, CurrencyPair.LTC_NGN etc
-            state: OrderState.DONE, OrderState.CONFIRM, OrderState.CANCEL, OrderState.WAIT. Defaults to done if not specified.
-            order_by: The Order in which you  retrieve result either ascending or desending order
-            user_id: The User ID. Use 'me' if fetching wallets of main authenticated user, use the user_id if fetching
+            pair: CurrencyPair.BTN_USDT, CurrencyPair.LTC_NGN etc.
+            state: OrderState.DONE, OrderState.CONFIRM, OrderState.CANCEL, OrderState.WAIT.
+                Defaults to done if not specified.
+            order_by: The Order in which you  retrieve result either ascending or descending order
+            user_id: The User ID. Use 'me'
+            if fetching wallets of main authenticated user, use the user_id if fetching
                 for Sub-account linked to the authenticated user.
 
         Returns:
@@ -54,8 +56,8 @@ class InstantOrder(BaseAPIWrapper):
 
         Args:
             id: This is the unique id used to identify instant orders.
-            user_id: The User ID. Use 'me' for main authenticated user,
-                use the user_id if fetching for Sub-account linked to the authenticated user.
+            user_id: The User ID. Use 'me' for the main authenticated user,
+                use the user_id if fetching for Subaccount linked to the authenticated user.
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
@@ -83,14 +85,14 @@ class InstantOrder(BaseAPIWrapper):
         """Create Instant Order
 
         Args:
-            bid: Currency.BITCON. Currency.NAIRA etc
-            ask: Currency.BINANCE_COIN, Currency.PANCAKE_SWAP etc
+            bid: Currency.BITCON. Currency.NAIRA etc.
+            ask: Currency.BINANCE_COIN, Currency.PANCAKE_SWAP etc.
             type: OrderType.BUY or OrderType.SELL
             volume: Used if unit is in bid currency.
             unit: The unit in which the order will be estimated,
                 The unit in which the order will be estimated.
             user_id:  The User ID. Use 'me' if fetching wallets of main authenticated user,
-                use the user_id if fetching for Sub-account linked to the authenticated user.
+                use the user_id if fetching for Subaccount linked to the authenticated user.
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
@@ -118,8 +120,8 @@ class InstantOrder(BaseAPIWrapper):
 
         Args:
             id:iD of an instant order
-            user_id: The User ID. Use 'me' for main authenticated user,
-                use the user_id if fetching for Sub-account linked to the authenticated user.
+            user_id: The User ID. Use 'me' for the main authenticated user,
+                use the user_id if fetching for Subaccount linked to the authenticated user.
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
@@ -139,8 +141,8 @@ class InstantOrder(BaseAPIWrapper):
 
         Args:
             id:iD of an instant order
-            user_id: The User ID. Use 'me' for main authenticated user,
-                use the user_id if fetching for Sub-account linked to the authenticated user.
+            user_id: The User ID. Use 'me' for the main authenticated user,
+                use the user_id if fetching for Subaccount linked to the authenticated user.
 :
 
         Returns:
@@ -157,7 +159,7 @@ class InstantOrder(BaseAPIWrapper):
         )
 
 
-class AsynInstantOrder(BaseAsyncAPIWrapper):
+class AsyncInstantOrder(BaseAsyncAPIWrapper):
     async def all(
         self,
         pair: Optional[CurrencyPair] = None,
@@ -168,11 +170,12 @@ class AsynInstantOrder(BaseAsyncAPIWrapper):
         """Fetches all instant orders, that have previously executed by you or your authenticated users.
 
         Args:
-            pair: CurrencyPair.BTN_USDT, CurrencyPair.LTC_NGN etc
-            state: OrderState.DONE, OrderState.CONFIRM, OrderState.CANCEL, OrderState.WAIT. Defaults to done if not specified.
-            order_by: The Order in which you  retrieve result either ascending or desending order
-            user_id: The User ID. Use 'me' if fetching wallets of main authenticated user, use the user_id if fetching
-                for Sub-account linked to the authenticated user.
+            pair: CurrencyPair.BTN_USDT, CurrencyPair.LTC_NGN etc.
+            state: OrderState.DONE, OrderState.CONFIRM, OrderState.CANCEL, OrderState.WAIT.
+                Defaults to done if not specified.
+            order_by: The Order in which you retrieve a result either ascending or descending order
+            user_id: The User ID. Use 'me' if fetching wallets of the main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
@@ -196,8 +199,8 @@ class AsynInstantOrder(BaseAsyncAPIWrapper):
 
         Args:
             id: This is the unique id used to identify instant orders.
-            user_id: The User ID. Use 'me' for main authenticated user,
-                use the user_id if fetching for Sub-account linked to the authenticated user.
+            user_id: The User ID. Use 'me' for the main authenticated user,
+                use the user_id if fetching for Subaccount linked to the authenticated user.
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
@@ -225,14 +228,14 @@ class AsynInstantOrder(BaseAsyncAPIWrapper):
         """Create Instant Order
         
         Args:
-            bid: Currency.BITCON. Currency.NAIRA etc
-            ask: Currency.BINANCE_COIN, Currency.PANCAKE_SWAP etc
+            bid: Currency.BITCON. Currency.NAIRA etc.
+            ask: Currency.BINANCE_COIN, Currency.PANCAKE_SWAP etc.
             type: OrderType.BUY or OrderType.SELL
             volume: Used if unit is in bid currency.
             unit: The unit in which the order will be estimated,
                 The unit in which the order will be estimated.
-            user_id:  The User ID. Use 'me' if fetching wallets of main authenticated user,
-                use the user_id if fetching for Sub-account linked to the authenticated user.
+            user_id:  The User ID. Use 'me' if fetching wallets of the main authenticated user,
+                use the user_id if fetching for Subaccount linked to the authenticated user.
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
@@ -260,8 +263,8 @@ class AsynInstantOrder(BaseAsyncAPIWrapper):
 
         Args:
             id:iD of an instant order
-            user_id: The User ID. Use 'me' for main authenticated user,
-                use the user_id if fetching for Sub-account linked to the authenticated user.
+            user_id: The User ID. Use 'me' for the main authenticated user,
+                use the user_id if fetching for Subaccount linked to the authenticated user.
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
@@ -282,8 +285,8 @@ class AsynInstantOrder(BaseAsyncAPIWrapper):
 
         Args:
             id:iD of an instant order
-            user_id: The User ID. Use 'me' for main authenticated user,
-                use the user_id if fetching for Sub-account linked to the authenticated user.
+            user_id: The User ID. Use 'me' for the main authenticated user,
+                use the user_id if fetching for Subaccount linked to the authenticated user.
 :
 
         Returns:

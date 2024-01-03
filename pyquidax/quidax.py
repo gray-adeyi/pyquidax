@@ -61,7 +61,7 @@ class Quidax(BaseAPIWrapper):
 
 
 class AsyncQuidax(BaseAsyncAPIWrapper):
-    async def Quidaxvalidate_address(self, currency: Currency, address: str):
+    async def validate_address(self, currency: Currency, address: str):
         return await self._api_call(
             url=f"{self.base_url}/{currency}/{address}/validate_address",
             method=HTTPMethod.GET,

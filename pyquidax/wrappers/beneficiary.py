@@ -1,5 +1,3 @@
-from typing import Optional
-
 from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
 from pyquidax.utils import Currency, HTTPMethod
 
@@ -8,11 +6,11 @@ class Beneficiary(BaseAPIWrapper):
     """A wrapper for interacting with authenticated user beneficiaries to receive and send assets on Quidax"""
 
     def all(self, currency: Currency, user_id: str = "me"):
-        """Fetch all beneficiaries for the authenticated user or a sub account
+        """Fetch all beneficiaries for the authenticated user or a subaccount
 
         Args:
-            currency: Currency.AXIE_IFFINITY, Currency. BITCOIN_CASH, Currency.LITECOIN etc
-            user_id: the user_id of Sub-account linked to the authenticated user
+            currency: Currency.AXIE_IFFINITY, Currency.BITCOIN_CASH, Currency.LITECOIN etc.
+            user_id: the user_id of Subaccount linked to the authenticated user
                 for performing actions for a subaccount.
 
          Returns:
@@ -38,7 +36,7 @@ class Beneficiary(BaseAPIWrapper):
             uid: Wallet Address of your crypto asset.
             extra: Additional defined label for the account.
             user_id: The User ID. Use 'me' for main authenticated user.
-                Use the user_id of Sub-account linked to the authenticated user
+                Use the user_id of Subaccount linked to the authenticated user
                 for performing actions on a subaccount.
 
         Returns:
@@ -61,8 +59,8 @@ class Beneficiary(BaseAPIWrapper):
 
         Args:
             id: The beneficiary id
-            user_id: The User ID. Use 'me' for main authenticated user.
-            Use the user_id of Sub-account linked to the authenticated user
+            user_id: The User ID. Use 'me' for the main authenticated user.
+            Use the user_id of Subaccount linked to the authenticated user
                 for performing actions for a subaccount.
 
         Returns:
@@ -83,7 +81,7 @@ class Beneficiary(BaseAPIWrapper):
 
         Args:
             id: The beneficiary id
-            user_id: Use 'me' for main authenticated user ,use the user_id of Sub-account linked
+            user_id: Use 'me' for the main authenticated user, use the user_id of Sub-account linked
                 to the authenticated user for performing actions for a subaccount.
 
         Returns:
@@ -134,8 +132,8 @@ class AsyncBeneficiary(BaseAsyncAPIWrapper):
              currency: Currency.AAVE, Currency.BINANCE_USD , Currency.NAIRA etc
              uid: Wallet Address of your crypto asset.
              extra: Additional defined label for the account.
-             user_id: The User ID. Use 'me' for main authenticated user.
-             Use the user_id of Sub-account linked to the authenticated user for performing actions on a subaccount.
+             user_id: The User ID. Use 'me' for the main authenticated user.
+             Use the user_id of Subaccount linked to the authenticated user for performing actions on a subaccount.
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
@@ -157,8 +155,8 @@ class AsyncBeneficiary(BaseAsyncAPIWrapper):
 
         Args:
             id: The beneficiary id
-            user_id: The User ID. Use 'me' for main authenticated user.
-            use the user_id of Sub-account linked to the authenticated user for performing actions for a subaccount.
+            user_id: The User ID. Use 'me' for the main authenticated user.
+            use the user_id of Subaccount linked to the authenticated user for performing actions for a subaccount.
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
@@ -178,8 +176,8 @@ class AsyncBeneficiary(BaseAsyncAPIWrapper):
 
         Args:
             id: The beneficiary id
-            user_id: Use 'me' for main authenticated user.
-                Use the user_id of Sub-account linked to the authenticated user
+            user_id: Use 'me' for the main authenticated user.
+                Use the user_id of Subaccount linked to the authenticated user
                 for performing actions for a subaccount.
 
         Returns:
