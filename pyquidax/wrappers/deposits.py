@@ -10,6 +10,8 @@ from pyquidax.utils import (
 
 
 class Deposit(BaseAPIWrapper):
+    """A wrapper that enables authenticated users to fetch crypto or fiat deposits of an authenticated user"""
+
     def all(self):
         """Fetch all deposits made by sub-users.
 
@@ -26,8 +28,7 @@ class Deposit(BaseAPIWrapper):
         )
 
     def get_by_user(self, user_id: str, currency: Currency, state: TransactionState):
-        """Fetch deposits by user.
-
+        """Fetches all deposits tethered to an authenticated account.
         Args:
             user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
                 use the user_id if fetching for Sub-account linked to the authenticated user.
@@ -52,7 +53,7 @@ class Deposit(BaseAPIWrapper):
         return self._api_call(url=url, method=HTTPMethod.GET)
 
     def get_by_id(self, deposit_id: str, user_id: str = "me"):
-        """Fetch a Deposit
+        """Fetches details of a deposits
 
         Args:
             deposit_id: An ID for the deposit to fetch
@@ -93,7 +94,7 @@ class AsyncDeposit(BaseAsyncAPIWrapper):
     async def get_by_user(
         self, user_id: str, currency: Currency, state: TransactionState
     ):
-        """Fetch deposits by user.
+        """Fetches all deposits tethered to an authenticated account.
 
         Args:
             user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
@@ -120,7 +121,7 @@ class AsyncDeposit(BaseAsyncAPIWrapper):
         return await self._api_call(url=url, method=HTTPMethod.GET)
 
     async def get_by_id(self, deposit_id: str, user_id: str = "me"):
-        """Fetch a Deposit
+        """Fetches details of a deposits
 
         Args:
             deposit_id: An ID for the deposit to fetch
