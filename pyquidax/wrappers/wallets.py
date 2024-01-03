@@ -139,7 +139,7 @@ class Wallet(BaseAPIWrapper):
 
 
 class AsyncWallet(BaseAsyncAPIWrapper):
-    """A Wrapper that creates and manages both fiat and cryptocurrency wallets"""
+    """An async wrapper that creates and manages both fiat and cryptocurrency wallets"""
 
     async def main(self):
         """Fetch all wallets linked to authenticated user or subaccount tethered
