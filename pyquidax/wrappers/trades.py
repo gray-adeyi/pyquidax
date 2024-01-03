@@ -49,8 +49,10 @@ class Trade(BaseAPIWrapper):
 
 
 class AsyncTrade(BaseAsyncAPIWrapper):
+    """An async Wrapper that fetch trades for the authenticated user"""
+
     async def all(self, user_id: str):
-        """Fetch trades for the authenticated user or a sub account
+        """An async Fetch trades for the authenticated user or a sub account
 
 
         Args:
@@ -71,7 +73,7 @@ class AsyncTrade(BaseAsyncAPIWrapper):
         )
 
     async def get(self, pair: CurrencyPair):
-        """Fetch recent trades for a given market pair
+        """An async Fetch recent trades for a given market pair
 
         Args:
             pair: CurrencyPair.LTC_NGN , CurrencyPair.USDT_NGN etc
