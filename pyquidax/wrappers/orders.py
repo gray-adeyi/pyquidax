@@ -11,8 +11,7 @@ from pyquidax.utils import (
 
 
 class Order(BaseAPIWrapper):
-    def __init__(self, secret_key: Optional[str] = None):
-        super().__init__(secret_key)
+    """A wrapper taht enables authenticated users to post bids (buy orders) and asks (sell orders) bids"""
 
     def create(
         self,
@@ -23,6 +22,25 @@ class Order(BaseAPIWrapper):
         ord_type: Literal["limit", "market"] = "limit",
         user_id: str = "me",
     ):
+        """Create a sell or buy order
+
+        Args:
+            pair: CurrenecyPair. XRP_NGN, CurrencyPair.DOGE_USDT etc
+            type: OrderType.BUY, OrderType.SELL
+            price: The price of the order
+            volume: Volume of assets
+            ord_type: The Order type either Literal["limit", "market"]
+            user_id: The User ID. Use 'me' for main authenticated user,
+                use the user_id of Sub-account linked to the authenticated user for performing activity for subaccount.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         data = {
             "market": pair,
             "side": type,
@@ -45,6 +63,23 @@ class Order(BaseAPIWrapper):
         order_by: Literal["asc", "desc"] = "asc",
         user_id: str = "me",
     ):
+        """Fetch all orders tethered to the authenticated user
+
+        Args:
+            pair: CurrencyuPair.DASH_USDT, CurrencyPair.AFEN_USDT, CurrencyPair.BLS_USDT etc
+            state: TransactionState.CHECKED,TransactionState.REJECTED etc
+            order_by: The Order in which you retrieve data either ascending or desending order
+            user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         query_params = (
             ("market", pair),
             ("state", state),
@@ -56,11 +91,42 @@ class Order(BaseAPIWrapper):
         return self._api_call(url=url, method=HTTPMethod.GET)
 
     def get(self, id: str, user_id: str = "me"):
+        """A wrapper that enables
+
+        Args:
+            id: An ID for the order to fetch
+            user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         return self._api_call(
             url=f"{self.base_url}/users/{user_id}/orders/{id}", method=HTTPMethod.GET
         )
 
     def cancel(self, id: str, user_id: str = "me"):
+        """Cancels an order tethered to the authenticated user
+
+        Args:
+            id: An ID for the order to fetch
+            user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+
+
+        ReTurns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         return self._api_call(
             url=f"{self.base_url}/users/{user_id}/orders/{id}/cancel",
             method=HTTPMethod.POST,
@@ -77,6 +143,25 @@ class AsyncOrder(BaseAsyncAPIWrapper):
         ord_type: Literal["limit", "market"] = "limit",
         user_id: str = "me",
     ):
+        """Create a sell or buy order
+
+        Args:
+            pair: CurrenecyPair. XRP_NGN, CurrencyPair.DOGE_USDT etc
+            type: OrderType.BUY, OrderType.SELL
+            price: The price of the order
+            volume: Volume of assets
+            ord_type: The Order type either Literal["limit", "market"]
+            user_id: The User ID. Use 'me' for main authenticated user,
+                use the user_id of Sub-account linked to the authenticated user for performing activity for subaccount.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         data = {
             "market": pair,
             "side": type,
@@ -99,6 +184,23 @@ class AsyncOrder(BaseAsyncAPIWrapper):
         order_by: Literal["asc", "desc"] = "asc",
         user_id: str = "me",
     ):
+        """Fetch all orders tethered to the authenticated user
+
+        Args:
+            pair: CurrencyuPair.DASH_USDT, CurrencyPair.AFEN_USDT, CurrencyPair.BLS_USDT etc
+            state: TransactionState.CHECKED,TransactionState.REJECTED etc
+            order_by: The Order in which you retrieve data either ascending or desending order
+            user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         query_params = (
             ("market", pair),
             ("state", state),
@@ -110,11 +212,42 @@ class AsyncOrder(BaseAsyncAPIWrapper):
         return await self._api_call(url=url, method=HTTPMethod.GET)
 
     async def get(self, id: str, user_id: str = "me"):
+        """A wrapper that enables
+
+        Args:
+            id: An ID for the order to fetch
+            user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         return await self._api_call(
             url=f"{self.base_url}/users/{user_id}/orders/{id}", method=HTTPMethod.GET
         )
 
     async def cancel(self, id: str, user_id: str = "me"):
+        """Cancels an order tethered to the authenticated user
+
+        Args:
+            id: An ID for the order to fetch
+            user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
+                use the user_id if fetching for Sub-account linked to the authenticated user.
+
+
+        Returns:
+            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse.status_code` (int) is the http status code of the response.
+            `APIResponse.status` (str | None) is the status of the response.
+            `APIResponse.message` (str | None) is the message of the response.
+            `APIResponse.data` (dict | None) is the data returned by Quidax as a result of the
+            request sent.
+        """
         return await self._api_call(
             url=f"{self.base_url}/users/{user_id}/orders/{id}/cancel",
             method=HTTPMethod.POST,
