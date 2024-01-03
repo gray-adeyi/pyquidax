@@ -101,6 +101,8 @@ class Beneficiary(BaseAPIWrapper):
 
 
 class AsyncBeneficiary(BaseAsyncAPIWrapper):
+    """An async wrapper for interacting with authenticated user beneficiaries to receive and send assets on Quidax"""
+
     async def all(self, currency: Currency, user_id: str = "me"):
         """Fetch all beneficiaries for the authenticated user or a sub account
 

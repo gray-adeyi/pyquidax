@@ -160,6 +160,10 @@ class InstantOrder(BaseAPIWrapper):
 
 
 class AsyncInstantOrder(BaseAsyncAPIWrapper):
+    """An async wrapper that enables authenticated
+    users to buy and sell cryptocurrencies at the current market price.
+    """
+
     async def all(
         self,
         pair: Optional[CurrencyPair] = None,

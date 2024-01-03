@@ -211,6 +211,8 @@ class Market(BaseAPIWrapper):
 
 
 class AsyncMarket(BaseAsyncAPIWrapper):
+    """An async wrapper that enables users to have access to current market-related data"""
+
     async def all(self):
         """List all markets
 

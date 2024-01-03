@@ -1,4 +1,4 @@
-from typing import Literal, Optional
+from typing import Literal
 
 from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
 from pyquidax.utils import (
@@ -11,7 +11,7 @@ from pyquidax.utils import (
 
 
 class Order(BaseAPIWrapper):
-    """A wrapper taht enables authenticated users to post bids (buy orders) and asks (sell orders) bids"""
+    """A wrapper that enables authenticated users to post bids (buy orders) and asks (sell orders) bids"""
 
     def create(
         self,
@@ -25,7 +25,7 @@ class Order(BaseAPIWrapper):
         """Create a sell or buy order
 
         Args:
-            pair: CurrenecyPair. XRP_NGN, CurrencyPair.DOGE_USDT etc
+            pair: CurrencyPair.XRP_NGN, CurrencyPair.DOGE_USDT etc.
             type: OrderType.BUY, OrderType.SELL
             price: The price of the order
             volume: Volume of assets
@@ -134,6 +134,8 @@ class Order(BaseAPIWrapper):
 
 
 class AsyncOrder(BaseAsyncAPIWrapper):
+    """An async wrapper that enables authenticated users to post bids (buy orders) and asks (sell orders) bids"""
+
     async def create(
         self,
         pair: CurrencyPair,
@@ -146,7 +148,7 @@ class AsyncOrder(BaseAsyncAPIWrapper):
         """Create a sell or buy order
 
         Args:
-            pair: CurrenecyPair. XRP_NGN, CurrencyPair.DOGE_USDT etc
+            pair: CurrencyPair.XRP_NGN, CurrencyPair.DOGE_USDT etc.
             type: OrderType.BUY, OrderType.SELL
             price: The price of the order
             volume: Volume of assets

@@ -1,5 +1,3 @@
-from typing import Optional
-
 from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
 from pyquidax.utils import (
     TransactionState,
@@ -10,7 +8,7 @@ from pyquidax.utils import (
 
 
 class Deposit(BaseAPIWrapper):
-    """A wrapper that enables authenticated users to fetch crypto or fiat deposits of an authenticated user"""
+    """A wrapper that enables authenticated users to fetch crypto or fiat deposits"""
 
     def all(self):
         """Fetch all deposits made by sub-users.
@@ -29,6 +27,7 @@ class Deposit(BaseAPIWrapper):
 
     def get_by_user(self, user_id: str, currency: Currency, state: TransactionState):
         """Fetches all deposits tethered to an authenticated account.
+
         Args:
             user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
                 use the user_id if fetching for Sub-account linked to the authenticated user.
@@ -75,6 +74,8 @@ class Deposit(BaseAPIWrapper):
 
 
 class AsyncDeposit(BaseAsyncAPIWrapper):
+    """An async wrapper that enables authenticated users to fetch crypto or fiat deposits"""
+
     async def all(self):
         """Fetch all deposits made by sub-users.
 

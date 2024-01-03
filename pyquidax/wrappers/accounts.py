@@ -112,6 +112,8 @@ class Account(BaseAPIWrapper):
 
 
 class AsyncAccount(BaseAsyncAPIWrapper):
+    """An async wrapper for interacting with user accounts on Quidax"""
+
     async def create_sub_account(
         self, email: str, first_name: str, last_name: str, phone_number: str
     ):
