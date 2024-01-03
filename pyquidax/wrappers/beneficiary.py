@@ -11,8 +11,7 @@ class Beneficiary(BaseAPIWrapper):
         """Fetch all beneficiaries for the authenticated user or a sub account
 
         Args:
-            currency: Currency Allowed valued: btc, ltc, xrp, dash, trx, doge.
-
+            currency: Currency.AXIE_IFFINITY, Currency. BITCOIN_CASH, Currency.LITECOIN etc
             user_id: the user_id of Sub-account linked to the authenticated user
                 for performing actions for a subaccount.
 
@@ -35,11 +34,11 @@ class Beneficiary(BaseAPIWrapper):
         """Create a beneficiary account for an authenticated account
 
         Args:
-             currency: Currency. Allowed valued: btc, ltc, xrp, dash, trx, doge.
-             uid: Wallet Address of your crypto asset.
-             extra: Additional defined label for the account.
-             user_id: The User ID. Use 'me' for main authenticated user.
-             Use the user_id of Sub-account linked to the authenticated user
+            currency: Currency.SOLANA, Currency.FLOKI_INU Currency.ETHEREUM, Currency.DASH etc
+            uid: Wallet Address of your crypto asset.
+            extra: Additional defined label for the account.
+            user_id: The User ID. Use 'me' for main authenticated user.
+                Use the user_id of Sub-account linked to the authenticated user
                 for performing actions on a subaccount.
 
         Returns:
@@ -63,7 +62,8 @@ class Beneficiary(BaseAPIWrapper):
         Args:
             id: The beneficiary id
             user_id: The User ID. Use 'me' for main authenticated user.
-            Use the user_id of Sub-account linked to the authenticated user for performing actions for a subaccount.
+            Use the user_id of Sub-account linked to the authenticated user
+                for performing actions for a subaccount.
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
@@ -107,8 +107,7 @@ class AsyncBeneficiary(BaseAsyncAPIWrapper):
         """Fetch all beneficiaries for the authenticated user or a sub account
 
         Args:
-            currency: Currency Allowed valued: btc, ltc, xrp, dash, trx, doge.
-
+            currency: Currency.STELLAR, Currency.POLKADOT, Currency.BABYDOGE, Currency.CARDANO etc
             user_id: the user_id of Sub-account linked to the authenticated user
             for performing actions for a subaccount.
 
@@ -132,7 +131,7 @@ class AsyncBeneficiary(BaseAsyncAPIWrapper):
         """Create a beneficiary account for an authenticated account
 
         Args:
-             currency: Currency. Allowed valued: btc, ltc, xrp, dash, trx, doge.
+             currency: Currency.AAVE, Currency.BINANCE_USD , Currency.NAIRA etc
              uid: Wallet Address of your crypto asset.
              extra: Additional defined label for the account.
              user_id: The User ID. Use 'me' for main authenticated user.
@@ -180,7 +179,8 @@ class AsyncBeneficiary(BaseAsyncAPIWrapper):
         Args:
             id: The beneficiary id
             user_id: Use 'me' for main authenticated user.
-            Use the user_id of Sub-account linked to the authenticated user for performing actions for a subaccount.
+                Use the user_id of Sub-account linked to the authenticated user
+                for performing actions for a subaccount.
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
