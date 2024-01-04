@@ -18,7 +18,7 @@ class Withdrawal(BaseAPIWrapper):
             state: TransactionState.SUBMITTED, TransactionState.SUBMITTING etc
 
         Returns:
-            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
             `APIResponse.status` (str | None) is the status of the response.
             `APIResponse.message` (str | None) is the message of the response.
@@ -37,6 +37,7 @@ class Withdrawal(BaseAPIWrapper):
             user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
                 use the user_id if fetching for Sub-account linked to the authenticated user.
             withdrawal_id: An ID for the withdrawal to fetch
+
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
@@ -70,6 +71,7 @@ class Withdrawal(BaseAPIWrapper):
             transaction_note: Notes for the recipient
             narration: Narration for the recipient
             fund_uid2: Destination tag
+
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
@@ -177,6 +179,7 @@ class AsyncWithdrawal(BaseAsyncAPIWrapper):
             transaction_note: Notes for the recipient
             narration: Narration for the recipient
             fund_uid2: Destination tag
+
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
