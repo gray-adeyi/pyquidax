@@ -13,6 +13,7 @@ class Wallet(BaseAPIWrapper):
         Args:
             user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
                 use the user_id if fetching for Sub-account linked to the authenticated user.
+
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
@@ -121,6 +122,7 @@ class Wallet(BaseAPIWrapper):
                 use the user_id if fetching for Sub-account linked to the authenticated user.
             currency: Currency.BINANCE_COIN , Currency.USD_COIN  etc
             network: Network.BTC, Network.BEP20, Network.RIPPLE etc
+
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
@@ -147,6 +149,7 @@ class AsyncWallet(BaseAsyncAPIWrapper):
         Args:
             user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
                 use the user_id if fetching for Sub-account linked to the authenticated user.
+
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
@@ -252,11 +255,12 @@ class AsyncWallet(BaseAsyncAPIWrapper):
     ):
         """Create Payment Address for a cryptocurrency
 
-         Args:
+        Args:
             user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
                 use the user_id if fetching for Sub-account linked to the authenticated user.
             currency: Currency.BINANCE_COIN , Currency.USD_COIN  etc
             network: Network.BTC, Network.BEP20, Network.RIPPLE etc
+
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
