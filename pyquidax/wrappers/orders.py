@@ -34,7 +34,7 @@ class Order(BaseAPIWrapper):
                 use the user_id of Sub-account linked to the authenticated user for performing activity for subaccount.
 
         Returns:
-            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
             `APIResponse.status` (str | None) is the status of the response.
             `APIResponse.message` (str | None) is the message of the response.
@@ -73,7 +73,7 @@ class Order(BaseAPIWrapper):
                 use the user_id if fetching for Sub-account linked to the authenticated user
 
         Returns:
-            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
             `APIResponse.status` (str | None) is the status of the response.
             `APIResponse.message` (str | None) is the message of the response.
@@ -99,7 +99,7 @@ class Order(BaseAPIWrapper):
                 use the user_id if fetching for Sub-account linked to the authenticated user.
 
         Returns:
-            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
             `APIResponse.status` (str | None) is the status of the response.
             `APIResponse.message` (str | None) is the message of the response.
@@ -120,7 +120,7 @@ class Order(BaseAPIWrapper):
 
 
         Returns:
-            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
             `APIResponse.status` (str | None) is the status of the response.
             `APIResponse.message` (str | None) is the message of the response.
@@ -157,7 +157,7 @@ class AsyncOrder(BaseAsyncAPIWrapper):
                 use the user_id of Sub-account linked to the authenticated user for performing activity for subaccount.
 
         Returns:
-            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
             `APIResponse.status` (str | None) is the status of the response.
             `APIResponse.message` (str | None) is the message of the response.
@@ -196,7 +196,7 @@ class AsyncOrder(BaseAsyncAPIWrapper):
                 use the user_id if fetching for Sub-account linked to the authenticated user
 
         Returns:
-            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
             `APIResponse.status` (str | None) is the status of the response.
             `APIResponse.message` (str | None) is the message of the response.
@@ -222,7 +222,7 @@ class AsyncOrder(BaseAsyncAPIWrapper):
                 use the user_id if fetching for Sub-account linked to the authenticated user.
 
         Returns:
-            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
             `APIResponse.status` (str | None) is the status of the response.
             `APIResponse.message` (str | None) is the message of the response.
@@ -242,7 +242,7 @@ class AsyncOrder(BaseAsyncAPIWrapper):
                 use the user_id if fetching for Sub-account linked to the authenticated user.
 
         Returns:
-            APIResponse, which is a dataclass containing the response gotten from Quidax servers.
+            `APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
             `APIResponse.status` (str | None) is the status of the response.
             `APIResponse.message` (str | None) is the message of the response.
