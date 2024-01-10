@@ -29,7 +29,7 @@ class Order(BaseAPIWrapper):
             type: OrderType.BUY, OrderType.SELL
             price: The price of the order
             volume: Volume of assets
-            ord_type: The Order type either Literal["limit", "market"]
+            ord_type: The order type either Literal["limit", "market"]
             user_id: The User ID. Use 'me' for main authenticated user,
                 use the user_id of Sub-account linked to the authenticated user for performing activity for subaccount.
 
@@ -91,7 +91,7 @@ class Order(BaseAPIWrapper):
         return self._api_call(url=url, method=HTTPMethod.GET)
 
     def get(self, id: str, user_id: str = "me"):
-        """A wrapper that enables
+        """Fetch order details for the authenticated user
 
         Args:
             id: An ID for the order to fetch
@@ -119,7 +119,7 @@ class Order(BaseAPIWrapper):
                 use the user_id if fetching for Sub-account linked to the authenticated user.
 
 
-        ReTurns:
+        Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
             `APIResponse.status_code` (int) is the http status code of the response.
             `APIResponse.status` (str | None) is the status of the response.
@@ -214,7 +214,7 @@ class AsyncOrder(BaseAsyncAPIWrapper):
         return await self._api_call(url=url, method=HTTPMethod.GET)
 
     async def get(self, id: str, user_id: str = "me"):
-        """A wrapper that enables
+        """Fetch order details for the authenticated user
 
         Args:
             id: An ID for the order to fetch
@@ -240,7 +240,6 @@ class AsyncOrder(BaseAsyncAPIWrapper):
             id: An ID for the order to fetch
             user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
                 use the user_id if fetching for Sub-account linked to the authenticated user.
-
 
         Returns:
             APIResponse, which is a dataclass containing the response gotten from Quidax servers.
