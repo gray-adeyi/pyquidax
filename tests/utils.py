@@ -2,11 +2,10 @@ import os
 from unittest import IsolatedAsyncioTestCase, TestCase
 from unittest.mock import patch, Mock
 
-import httpx
 from dotenv import load_dotenv
 
 
-class TestDummyData:
+class DummyDataMixin:
     @classmethod
     def setUpClass(cls) -> None:
         cls.secret_key = "qwerty"
@@ -16,7 +15,7 @@ class TestDummyData:
         cls.mocked_api_response.json.return_value = {}
 
 
-class MockedAPICallTestCase(TestDummyData, TestCase):
+class MockedAPICallTestCase(DummyDataMixin, TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         super().setUpClass()
@@ -60,7 +59,7 @@ class MockedAPICallTestCase(TestDummyData, TestCase):
         cls.head_patcher.stop()
 
 
-class MockedAsyncAPICallTestCase(TestDummyData, IsolatedAsyncioTestCase):
+class MockedAsyncAPICallTestCase(DummyDataMixin, IsolatedAsyncioTestCase):
     @classmethod
     def setUpClass(cls) -> None:
         super().setUpClass()
@@ -108,3 +107,4 @@ class CredentialMixin:
     @classmethod
     def setUpClass(cls) -> None:
         load_dotenv()
+        cls.secret_key = os.getenv("QUIDAX_SECRET_KEY")
