@@ -1,6 +1,6 @@
 from pyquidax.base import BaseAPIWrapper, __version__, BaseAsyncAPIWrapper
 from pyquidax.utils import HTTPMethod, APIResponse
-from tests.mocked_api_call_testcase import (
+from tests.utils import (
     MockedAPICallTestCase,
     MockedAsyncAPICallTestCase,
 )

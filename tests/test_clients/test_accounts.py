@@ -1,6 +1,6 @@
 from unittest import TestCase, IsolatedAsyncioTestCase
 
-from tests.mocked_api_call_testcase import (
+from tests.utils import (
     MockedAPICallTestCase,
     MockedAsyncAPICallTestCase,
     CredentialMixin,
