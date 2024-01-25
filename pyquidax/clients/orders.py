@@ -114,7 +114,7 @@ class OrderClient(BaseAPIWrapper):
         """Cancels an order tethered to the authenticated user
 
         Args:
-            id: An ID for the order to fetch
+            id: An ID for the order to cancel
             user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
                 use the user_id if fetching for Sub-account linked to the authenticated user.
 
@@ -237,7 +237,7 @@ class AsyncOrderClient(BaseAsyncAPIWrapper):
         """Cancels an order tethered to the authenticated user
 
         Args:
-            id: An ID for the order to fetch
+            id: An ID for the order to cancel
             user_id: The User ID. Use 'me' if fetching wallets of main authenticated user,
                 use the user_id if fetching for Sub-account linked to the authenticated user.
 
