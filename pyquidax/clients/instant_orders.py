@@ -11,7 +11,7 @@ from pyquidax.utils import (
 )
 
 
-class InstantOrder(BaseAPIWrapper):
+class InstantOrderClient(BaseAPIWrapper):
     """A wrapper that enables authenticated
     users to buy and sell cryptocurrencies at the current market price.
     """
@@ -159,7 +159,7 @@ class InstantOrder(BaseAPIWrapper):
         )
 
 
-class AsyncInstantOrder(BaseAsyncAPIWrapper):
+class AsyncInstantOrderClient(BaseAsyncAPIWrapper):
     """An async wrapper that enables authenticated
     users to buy and sell cryptocurrencies at the current market price.
     """

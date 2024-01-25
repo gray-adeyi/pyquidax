@@ -8,36 +8,36 @@ from pyquidax.utils import (
     CurrencyPair,
     append_query_parameters,
 )
-from pyquidax.wrappers.accounts import Account
-from pyquidax.wrappers.beneficiary import Beneficiary
-from pyquidax.wrappers.deposits import Deposit
-from pyquidax.wrappers.instant_orders import InstantOrder
-from pyquidax.wrappers.markets import Market
-from pyquidax.wrappers.orders import Order
-from pyquidax.wrappers.trades import Trade
-from pyquidax.wrappers.wallets import Wallet
-from pyquidax.wrappers.withdrawals import Withdrawal
+from pyquidax.clients.accounts import AccountClient, AsyncAccountClient
+from pyquidax.clients.beneficiary import BeneficiaryClient, AsyncBeneficiaryClient
+from pyquidax.clients.deposits import DepositClient, AsyncDepositClient
+from pyquidax.clients.instant_orders import InstantOrderClient, AsyncInstantOrderClient
+from pyquidax.clients.markets import MarketClient, AsyncMarketClient
+from pyquidax.clients.orders import OrderClient, AsyncOrderClient
+from pyquidax.clients.trades import TradeClient, AsyncTradeClient
+from pyquidax.clients.wallets import WalletClient, AsyncWalletClient
+from pyquidax.clients.withdrawals import WithdrawalClient, AsyncWithdrawalClient
 
 
-class Quidax(BaseAPIWrapper):
+class QuidaxClient(BaseAPIWrapper):
     """This is a synchronous client for interacting with endpoints provided by Quidax.
 
     It provides attribute bindings and methods that represent every endpoint provided by Quidax.
-    E.g. `Quidax.accounts` is a binding to the `Account` client which provides methods for endpoints
+    E.g. `QuidaxClient.accounts` is a binding to the `Account` client which provides methods for endpoints
     related to accounts on the Quidax platform. It also has methods like `validate_address`
     """
 
     def __init__(self, secret_key: Optional[str] = None):
         super().__init__(secret_key)
-        self.accounts = Account(secret_key)
-        self.beneficiaries = Beneficiary(secret_key)
-        self.deposits = Deposit(secret_key)
-        self.instant_orders = InstantOrder(secret_key)
-        self.markets = Market(secret_key)
-        self.orders = Order(secret_key)
-        self.trades = Trade(secret_key)
-        self.wallets = Wallet(secret_key)
-        self.withdrawals = Withdrawal(secret_key)
+        self.accounts = AccountClient(secret_key)
+        self.beneficiaries = BeneficiaryClient(secret_key)
+        self.deposits = DepositClient(secret_key)
+        self.instant_orders = InstantOrderClient(secret_key)
+        self.markets = MarketClient(secret_key)
+        self.orders = OrderClient(secret_key)
+        self.trades = TradeClient(secret_key)
+        self.wallets = WalletClient(secret_key)
+        self.withdrawals = WithdrawalClient(secret_key)
 
     def validate_address(self, currency: Currency, address: str):
         """Validates a wallet address.
@@ -110,13 +110,25 @@ class Quidax(BaseAPIWrapper):
         )
 
 
-class AsyncQuidax(BaseAsyncAPIWrapper):
+class AsyncQuidaxClient(BaseAsyncAPIWrapper):
     """This is an asynchronous client for interacting with endpoints provided by Quidax.
 
     It provides attribute bindings and methods that represent every endpoint provided by Quidax.
-    E.g. `Quidax.accounts` is a binding to the `Account` client which provides methods for endpoints
+    E.g. `AsyncQuidaxClient.accounts` is a binding to the `Account` client which provides methods for endpoints
     related to accounts on the Quidax platform. It also has methods like `validate_address`
     """
+
+    def __init__(self, secret_key: Optional[str] = None):
+        super().__init__(secret_key)
+        self.accounts = AsyncAccountClient(secret_key)
+        self.beneficiaries = AsyncBeneficiaryClient(secret_key)
+        self.deposits = AsyncDepositClient(secret_key)
+        self.instant_orders = AsyncInstantOrderClient(secret_key)
+        self.markets = AsyncMarketClient(secret_key)
+        self.orders = AsyncOrderClient(secret_key)
+        self.trades = AsyncTradeClient(secret_key)
+        self.wallets = AsyncWalletClient(secret_key)
+        self.withdrawals = AsyncWithdrawalClient(secret_key)
 
     async def validate_address(self, currency: Currency, address: str):
         """Validates a wallet address.

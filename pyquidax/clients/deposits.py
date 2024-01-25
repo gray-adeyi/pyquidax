@@ -7,7 +7,7 @@ from pyquidax.utils import (
 )
 
 
-class Deposit(BaseAPIWrapper):
+class DepositClient(BaseAPIWrapper):
     """A wrapper that enables authenticated users to fetch crypto or fiat deposits"""
 
     def all(self):
@@ -73,7 +73,7 @@ class Deposit(BaseAPIWrapper):
         )
 
 
-class AsyncDeposit(BaseAsyncAPIWrapper):
+class AsyncDepositClient(BaseAsyncAPIWrapper):
     """An async wrapper that enables authenticated users to fetch crypto or fiat deposits"""
 
     async def all(self):

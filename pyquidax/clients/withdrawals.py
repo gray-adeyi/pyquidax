@@ -1,11 +1,10 @@
-from typing import Optional
+from decimal import Decimal
 
 from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
 from pyquidax.utils import Currency, TransactionState, HTTPMethod
-from decimal import Decimal
 
 
-class Withdrawal(BaseAPIWrapper):
+class WithdrawalClient(BaseAPIWrapper):
     """A wrapper that enables authenticated users to send cryptocurrency to internal or external wallets"""
 
     def all(self, user_id: str, currency: Currency, state: TransactionState):
@@ -114,7 +113,7 @@ class Withdrawal(BaseAPIWrapper):
         )
 
 
-class AsyncWithdrawal(BaseAsyncAPIWrapper):
+class AsyncWithdrawalClient(BaseAsyncAPIWrapper):
     """An Async wrapper that enables authenticated users to send cryptocurrency to internal or external wallets"""
 
     async def all(self, user_id: str, currency: Currency, state: TransactionState):

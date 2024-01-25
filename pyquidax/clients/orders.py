@@ -10,7 +10,7 @@ from pyquidax.utils import (
 )
 
 
-class Order(BaseAPIWrapper):
+class OrderClient(BaseAPIWrapper):
     """A wrapper that enables authenticated users to post bids (buy orders) and asks (sell orders) bids"""
 
     def create(
@@ -133,7 +133,7 @@ class Order(BaseAPIWrapper):
         )
 
 
-class AsyncOrder(BaseAsyncAPIWrapper):
+class AsyncOrderClient(BaseAsyncAPIWrapper):
     """An async wrapper that enables authenticated users to post bids (buy orders) and asks (sell orders) bids"""
 
     async def create(

@@ -2,7 +2,7 @@ from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
 from pyquidax.utils import HTTPMethod
 
 
-class Account(BaseAPIWrapper):
+class AccountClient(BaseAPIWrapper):
     """A wrapper for interacting with user accounts on Quidax"""
 
     def create_sub_account(
@@ -111,7 +111,7 @@ class Account(BaseAPIWrapper):
         return self._api_call(url=f"{self.base_url}/users", method=HTTPMethod.GET)
 
 
-class AsyncAccount(BaseAsyncAPIWrapper):
+class AsyncAccountClient(BaseAsyncAPIWrapper):
     """An async wrapper for interacting with user accounts on Quidax"""
 
     async def create_sub_account(

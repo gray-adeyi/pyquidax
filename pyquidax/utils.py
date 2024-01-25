@@ -7,6 +7,12 @@ Period = Literal[1, 5, 15, 30, 60, 120, 240, 360, 720, 1440, 4320, 10080]
 
 @dataclass
 class APIResponse:
+    """A dataclass representing the response returned from Quidax servers.
+
+    Every method on each client class provided by the pyquidax package returns
+    an `APIResponse`
+    """
+
     status_code: int
     status: Optional[str]
     message: Optional[str]

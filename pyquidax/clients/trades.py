@@ -1,10 +1,8 @@
-from typing import Optional
-
 from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
 from pyquidax.utils import CurrencyPair, HTTPMethod
 
 
-class Trade(BaseAPIWrapper):
+class TradeClient(BaseAPIWrapper):
     """A Wrapper that fetch trades for the authenticated user"""
 
     def all(self, user_id: str):
@@ -48,7 +46,7 @@ class Trade(BaseAPIWrapper):
         )
 
 
-class AsyncTrade(BaseAsyncAPIWrapper):
+class AsyncTradeClient(BaseAsyncAPIWrapper):
     """An async Wrapper that fetch trades for the authenticated user"""
 
     async def all(self, user_id: str):

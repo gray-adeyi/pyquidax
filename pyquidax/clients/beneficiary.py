@@ -2,7 +2,7 @@ from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
 from pyquidax.utils import Currency, HTTPMethod
 
 
-class Beneficiary(BaseAPIWrapper):
+class BeneficiaryClient(BaseAPIWrapper):
     """A wrapper for interacting with authenticated user beneficiaries to receive and send assets on Quidax"""
 
     def all(self, currency: Currency, user_id: str = "me"):
@@ -100,7 +100,7 @@ class Beneficiary(BaseAPIWrapper):
         )
 
 
-class AsyncBeneficiary(BaseAsyncAPIWrapper):
+class AsyncBeneficiaryClient(BaseAsyncAPIWrapper):
     """An async wrapper for interacting with authenticated user beneficiaries to receive and send assets on Quidax"""
 
     async def all(self, currency: Currency, user_id: str = "me"):

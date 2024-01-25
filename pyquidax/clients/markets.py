@@ -4,7 +4,7 @@ from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
 from pyquidax.utils import HTTPMethod, CurrencyPair, append_query_parameters, Period
 
 
-class Market(BaseAPIWrapper):
+class MarketClient(BaseAPIWrapper):
     """A wrapper that enables users to have access to current market-related data"""
 
     def all(self):
@@ -210,7 +210,7 @@ class Market(BaseAPIWrapper):
         )
 
 
-class AsyncMarket(BaseAsyncAPIWrapper):
+class AsyncMarketClient(BaseAsyncAPIWrapper):
     """An async wrapper that enables users to have access to current market-related data"""
 
     async def all(self):

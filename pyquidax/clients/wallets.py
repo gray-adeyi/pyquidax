@@ -4,7 +4,7 @@ from pyquidax.base import BaseAPIWrapper, BaseAsyncAPIWrapper
 from pyquidax.utils import HTTPMethod, Currency, Network
 
 
-class Wallet(BaseAPIWrapper):
+class WalletClient(BaseAPIWrapper):
     """A Wrapper that creates and manages both fiat and cryptocurrency wallets"""
 
     def main(self):
@@ -140,7 +140,7 @@ class Wallet(BaseAPIWrapper):
         )
 
 
-class AsyncWallet(BaseAsyncAPIWrapper):
+class AsyncWalletClient(BaseAsyncAPIWrapper):
     """An async wrapper that creates and manages both fiat and cryptocurrency wallets"""
 
     async def main(self):
